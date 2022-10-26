@@ -10,22 +10,23 @@ const path =require("path");
 //middle ware to serve static assets
 app.use(express.static("public"))
 
+//data parsing
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 //data array
 const animals = [
     {
         id:1,
         name:"Shiva",
-        isCat:true
     },
     {
         id:2,
         name:"Bahamut",
-        isCat:true
     },
     {
         id:3,
         name:"Bella",
-        isCat:false
     },
 ]
 
@@ -39,9 +40,11 @@ app.get("/animals",(req,res)=>{
     console.log("hello")
     res.json(animals)
 })
-// app.post("/animals",(req,res)=>{
-//     res.json("post request recieved")
-// })
+app.post("/animals",(req,res)=>{
+    console.log(req.body)
+    animals.push(req.body);
+    res.json("post request recieved")
+})
 
 //GET to /animals/1, grabs that animal by ID
 app.get('/animals/:animalId',(req,res)=>{
