@@ -3,7 +3,7 @@ const express = require("express");
 // instantianting a new express server
 const app = express();
 // selecting network port
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 // importing path package from standard library
 const path = require("path");
 const fs = require("fs");
@@ -32,5 +32,5 @@ app.get("*", (req, res) => {
 
 //tells my server where to looks for requests
 app.listen(PORT, () => {
-  console.log("listening!");
+  console.log(`listening on port ${PORT}!`);
 });
