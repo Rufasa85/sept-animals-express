@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 
 router.get("/", (req, res) => {
-    console.log("hello");
+    // console.log("hello");
     fs.readFile("./db/animals.json", "utf-8", (err, data) => {
       if (err) {
         throw err;
